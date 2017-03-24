@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+    <head>
+	    <meta charset="utf-8" />
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <!-- Library of jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <!--Font style-->
+      <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
+             <!-- Title -->
+	    <title>JS calculator</title>
+<style>
+body{
+	background:url(https://static.pexels.com/photos/162614/coffee-work-desk-notebook-office-162614.jpeg);
+	font-family:'Jim Nightshade', cursive;
+	color:black;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+.layer{
+	border:1px solid black;
+	width:320px;
+	height:480px;
+	background-color:black;
+	border-radius:15px;
+	box-shadow:inset 0 0 10px white;
+}
+#on{
+	border:1px solid #b2b0b0;
+	width:50px;
+	color:black;
+	background-color:white;
+	cursor:pointer;
+	padding:5px;
+	float:right;
+	margin-right:45px;
+}
+#display{
+	border:1px solid #edeaea;
+	width:220px;
+	height:15px;
+	margin:45px 20px 20px 20px;
+	padding:20px;
+	background-color:#edeaea;
+	font-size:30px;
+	text-align:right;
+}
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#plus,#minus,#mul,#div,#percentage,#clear,#dot,#delete,#off{
+	margin-top:20px;
+	margin-left:10px;
+	width:50px;
+	height:40px;
+	cursor:pointer;
+}
+#equal{
+	width:105px;
+	height:43px;
+	margin-left:20px;
+	cursor:pointer;
+}
+footer{
+	position:absolute;
+	padding-top:50px;
+	bottom:0;
+	left:40%;
+}
+@media screen and (max-width: 340px) {
+.layer{
+	width:auto;
+	height:400px;
+}
+#display{
+	width:auto;
+	height:5px;
+}
+#one,#two,#three,#four,#five,#six,#seven,#eight,#nine,#zero,#plus,#minus,#mul,#div,#percentage,#clear,#dot,#delete,#off{
+	margin-top:10px;
+	margin-left:5px;
+	width:50px;
+	height:30px;
+}
+#equal{
+	width:100px;
+	height:30px;
+	margin-left:10px;
+}
+}
+</style>
+</head>
+<body>
+<center>
+<h1>JS CALCULATOR</h1>
+<div class="layer">
+	<div id="display"></div>
+		<div id="buttons">
+			<button id="off" onclick="s_off()">OFF</button>
+			<button id="clear" onclick="cleeer()">AC</button>
+			<button id="delete" onclick="del()"><img src="https://cdn2.iconfinder.com/data/icons/budicon-interface-layout-2/16/93-interface_-_backspace_back_arrow-128.png" width="15" height="15"></button>
+			<button id="div" onclick="divide()">/</button><br>
+			<button id="seven" onclick="num7()">7</button>
+			<button id="eight" onclick="num8()">8</button>
+			<button id="nine" onclick="num9()">9</button>
+			<button id="minus" onclick="sub()">-</button><br>
+			<button id="four" onclick="num4()">4</button>
+			<button id="five" onclick="num5()">5</button>
+			<button id="six" onclick="num6()">6</button>
+			<button id="mul" onclick="mul()">*</button><br>
+			<button id="one" onclick="num1()">1</button>
+			<button id="two"  onclick="num2()">2</button>
+			<button id="three" onclick="num3()">3</button>
+			<button id="plus" onclick="sum()">+</button><br>
+			<button id="dot" onclick="dot()"><b>.</b></button>
+			<button id="zero" onclick="num0()">0</button>
+			<button id="equal" onclick="equal()">=</button>
+		</div>
+			<p id="on" onclick="s_on()">ON</p>
+</div>
+</center>
+<footer class="text-center">
+		<p>Designed by Nusrath Yasin for Coderstrust & Freecodecamp</p>
+</footer>
+<script>
+		function num1(){
+			document.getElementById("display").innerHTML +='1';
+		}
+		function num2(){
+			document.getElementById("display").innerHTML +='2';
+		}
+		function num3(){
+			document.getElementById("display").innerHTML +='3';
+		}
+		function num4(){
+			document.getElementById("display").innerHTML +='4';
+		}
+		function num5(){
+			document.getElementById("display").innerHTML +='5';
+		}
+		function num6(){
+			document.getElementById("display").innerHTML +='6';
+		}
+		function num7(){
+			document.getElementById("display").innerHTML +='7';
+		}
+		function num8(){
+			document.getElementById("display").innerHTML +='8';
+		}
+		function num9(){
+			document.getElementById("display").innerHTML +='9';
+		}
+		function num0(){
+			document.getElementById("display").innerHTML +='0';
+		}
+		function dot(){
+			document.getElementById("display").innerHTML +='.';
+		}
+		function sum(){
+			document.getElementById("display").innerHTML +='+';
+		}
+		function sub(){
+			document.getElementById("display").innerHTML +='-';
+		}
+		function mul(){
+			document.getElementById("display").innerHTML +='*';
+		}
+		function divide(){
+			document.getElementById("display").innerHTML +='/';
+		}
+
+		function equal(){
+			var res = eval(document.getElementById("display").innerText);
+			document.getElementById("display").innerHTML = res;
+			console.log(res);
+		}
+		function cleeer(){
+			document.getElementById("display").innerHTML ='0';
+		}
+		function s_off(){
+			$("#display").empty();
+			document.getElementById("display").style.background="#636361";
+			document.getElementById("display").style.border="1px solid #636361";
+			$('button').prop('disabled', true);
+		}
+		function s_on(){
+			$("#display").empty();
+			document.getElementById("display").style.background="#edeaea";
+			document.getElementById("display").style.border="1px solid #edeaea";
+			$('button').prop('disabled', false);
+		}
+		function del(){
+			var delet = document.getElementById("display").innerText;
+			str = delet.substring(0, delet.length - 1);
+			document.getElementById("display").innerHTML = str;
+		}
+</script>
+</body>
+</html>
